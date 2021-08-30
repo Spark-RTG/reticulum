@@ -10,7 +10,8 @@ defmodule Ret.Meta do
       version: @version,
       phx_host: module_config(:phx_host) || :net_adm.localhost() |> :net_adm.dns_hostname() |> elem(1) |> to_string,
       phx_port: Application.get_env(:ret, RetWeb.Endpoint)[:https][:port] |> to_string,
-      pool: Application.get_env(:ret, Ret)[:pool]
+      pool: Application.get_env(:ret, Ret)[:pool],
+      testrdl: "rdl test for custom reticulum"
     }
   end
 
@@ -42,7 +43,6 @@ defmodule Ret.Meta do
   def available_integrations_meta do
     %{
       twitter: Ret.TwitterClient.available?(),
-      poly: Ret.MediaSearch.available?(:poly),
       bing_images: Ret.MediaSearch.available?(:bing_images),
       bing_videos: Ret.MediaSearch.available?(:bing_videos),
       youtube_videos: Ret.MediaSearch.available?(:youtube_videos),
